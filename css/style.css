@@ -1,0 +1,154 @@
+body {
+    overflow: hidden;
+}
+
+#track {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    left: 500px;
+    background: url("../images/track.jpg") repeat-y left top;
+    overflow: hidden;
+    background-size: contain;
+}
+
+.traffic_car_1 {
+    position: absolute;
+    top: 0px;
+    width: 35px;
+    height: 70px;
+    background-image: url('../images/traffic_car_1.jpg');
+    background-repeat: no-repeat;
+   
+}
+
+.fuel {
+    position: absolute;
+    top: 0px;
+    width: 35px;
+    height: 70px;
+    background-image: url('../images/fuel.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+
+.oilSpill {
+    position: absolute;
+    top: 0px;
+    width: 35px;
+    height: 70px;
+    background-image: url('../images/oil_spill.jpg');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+
+.traffic_car_2 {
+    position: absolute;
+    left: 215px;
+    top: 0px;
+    width: 35px;
+    height: 70px;
+    background-image: url('../images/traffic_car_2.jpg');
+    background-repeat: no-repeat;
+}
+
+#car {
+    position: absolute;
+    left: 135px;
+   bottom: 10px;
+    width: 35px;
+    height: 65px;
+    background-image: url('../images/car.jpg');
+    background-repeat: no-repeat;
+}
+
+.animated {
+    -webkit-transform-origin: center center;
+    -webkit-animation: tilt 6s infinite linear;
+}
+
+.animated1 {
+    -webkit-transform-origin: center center;
+    -webkit-animation: tilt1 6s infinite linear;
+}
+
+.car2 {
+    top: 0px !important;
+}
+
+@-webkit-keyframes tilt {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(60deg);
+    }
+}
+
+@-webkit-keyframes tilt1 {
+    from {
+        -webkit-transform: rotate(60deg);
+    }
+    to {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+#progressbar {
+    width: 30%;
+    height: 2%;
+}
+
+
+@-webkit-keyframes spinnerRotate
+{
+    from{-webkit-transform:rotate(0deg);
+               
+
+    }
+    to{left:40%;-webkit-transform:rotate(360deg);}
+    
+
+}
+@-moz-keyframes spinnerRotate
+{
+    from{-moz-transform:rotate(0deg) ;}
+    to{left:40%;-moz-transform:rotate(360deg) ;}
+
+}
+@-ms-keyframes spinnerRotate
+{
+    from{-ms-transform:rotate(0deg);}
+    to{left:40%;-ms-transform:rotate(360deg);}
+
+}
+
+
+
+.spin{
+    -webkit-animation-name:  spinnerRotate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: movingCar spinnerRotate;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: movingCar spinnerRotate;
+    -ms-animation-duration: 1s;
+    -ms-animation-iteration-count: 1;
+    -ms-animation-timing-function: linear;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
