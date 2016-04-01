@@ -3,7 +3,7 @@ body {
 }
 
 #track {
-    width: 300px;
+    width: 20%;
     height: 100%;
     position: absolute;
     left: 500px;
@@ -15,9 +15,9 @@ body {
 .traffic_car_1 {
     position: absolute;
     top: 0px;
-    width: 35px;
-    height: 70px;
-    background-image: url('../images/traffic_car_1.jpg');
+      width: 34px;
+    height: 64px;
+    background-image: url('../images/traffic_car_1.png');
     background-repeat: no-repeat;
    
 }
@@ -35,9 +35,9 @@ body {
 .oilSpill {
     position: absolute;
     top: 0px;
-    width: 35px;
-    height: 70px;
-    background-image: url('../images/oil_spill.jpg');
+    width: 19%;
+    height: 8%;
+    background-image: url('../images/oil_spill.png');
     background-repeat: no-repeat;
     background-position: 0px 0px;
 }
@@ -46,9 +46,9 @@ body {
     position: absolute;
     left: 215px;
     top: 0px;
-    width: 35px;
-    height: 70px;
-    background-image: url('../images/traffic_car_2.jpg');
+        width: 37px;
+    height: 64px;
+    background-image: url('../images/car.png');
     background-repeat: no-repeat;
 }
 
@@ -56,9 +56,9 @@ body {
     position: absolute;
     left: 135px;
    bottom: 10px;
-    width: 35px;
-    height: 65px;
-    background-image: url('../images/car.jpg');
+       width: 14%;
+    height: 9.5%;
+    background-image: url('../images/car.png');
     background-repeat: no-repeat;
 }
 
@@ -141,11 +141,13 @@ body {
 }
 
 
-
-
-
-
-
+.count_down{
+        font-size: 100px;
+    margin-top: 100%;
+    color: green;
+      width: 100%;
+    text-align: center;
+}
 
 
 

@@ -1,33 +1,86 @@
 <html>
-    <head>
-           <script src="bower_components/jquery/dist/jquery.js"></script>
 
-        <script src="js/car.js"></script>
-          <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-              <link href="bower_components//jquery-ui/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<head>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <link href="bower_components//jquery-ui/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="bower_components/bootstrap/js/modal.js"></script>
+
+    <script src="js/car.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+  
 
     <link href="css/style.css" rel="stylesheet">
-    </head>
+</head>
+
 <body>
 
-<div id="track" class="track">
+    <div id="track" class="track">
+        <div class='count_down'></div>
 
-</div>
+    </div>
 
-    <div><label>Score :</label><p class='score'></p></div>
-    <div><label>Fuel :</label>
-<div id="progressbar"></div>
-
-
-            <div class='count_down'></div>
-
-
-
-
+    <div>
+        <label>Score :</label>
+        <p class='score'></p>
+    </div>
+    <div>
+        <label>Fuel :</label>
+        <div id="progressbar"></div>
 
 
 
+  <button type="button" class="popup btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
-</div>
+
+<!-- Modal-->
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+     <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Car Racing</h4>
+          </div>
+        <div class="modal-body">
+          <p>Welcome</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="start btn btn-default" data-dismiss="modal">Start</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <button type="button" class="gameOver btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Open Modal</button>
+
+
+<!-- Modal-->
+ <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+     <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+          </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="start btn btn-default" data-dismiss="modal">Restart</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+    </div>
 </body>
+
 </html>
