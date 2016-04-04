@@ -1,13 +1,35 @@
 body {
     overflow: hidden;
+    background-image: url('../images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #track {
     width: 20%;
-    height: 100%;
+    height: inherit;
     position: absolute;
     left: 500px;
     background: url("../images/track.jpg") repeat-y left top;
+    overflow: hidden;
+    background-size: contain;
+    z-index: -1;
+}
+.sideright {
+    width: 20%;
+    height: inherit;
+    position: absolute;
+    left: 773px;
+    background: url("../images/sides.png") repeat-y left top;
+    overflow: hidden;
+    background-size: contain;
+}
+.sideleft {
+    width: 20%;
+    height: inherit;
+    position: absolute;
+    left: 228px;
+    background: url("../images/sideleft.png") repeat-y left top;
     overflow: hidden;
     background-size: contain;
 }
@@ -18,6 +40,16 @@ body {
       width: 34px;
     height: 64px;
     background-image: url('../images/traffic_car_1.png');
+    background-repeat: no-repeat;
+   
+}
+
+.startline {
+    position: absolute;
+    bottom: 160px;
+    width: 273px;
+    height: 75px;
+    background-image: url('../images/start.png');
     background-repeat: no-repeat;
    
 }
@@ -54,12 +86,14 @@ body {
 
 #car {
     position: absolute;
-    left: 135px;
-   bottom: 10px;
+    left: 120px;
+   bottom: 100px;
        width: 14%;
     height: 9.5%;
     background-image: url('../images/car.png');
     background-repeat: no-repeat;
+        z-index: 1;
+
 }
 
 .animated {
@@ -95,7 +129,7 @@ body {
 }
 
 #progressbar {
-    width: 30%;
+       width: 20%;
     height: 2%;
 }
 
@@ -151,6 +185,56 @@ body {
 
 
 
+.cargame{
+    width:1024px;
+    height: 768px;
+    background-position: 0px 0px;
+}
 
 
 
+.gameover{
+    left: 350px;
+    top: 20px;
+    position: absolute;
+    border: 2px solid white;
+    width: 600px;
+    height: 630px;
+    background-image: url('../images/white.png');
+
+}
+
+
+.gameovertext{
+    margin-left: 170px;
+    margin-top: 40px;
+    font-size: 50px;
+}
+
+.gameover>img{
+    margin-left: 150px;
+    margin-top: 70px;
+
+}
+
+.gameovertextcrached{
+        font-size: 30px;
+    margin-left: 250px;
+}
+.gameoverbutton
+{
+    margin-left: 265px;
+    margin-top: 30px;
+}
+
+.finish{
+  height: 54px;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    background: url("../images/finish.jpg");
+    background-repeat: no-repeat;
+    z-index: -1;
+
+}
+  

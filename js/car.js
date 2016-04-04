@@ -11,21 +11,28 @@ var app = {};
 //        
 //    }
 //};
+app.collision=0;
 app.flag = 4;
 //app.game=0;
 app.countDown = function () {
+    //$('.gameover').empty();
+     $(".track").append(
+        $('<div />', {
+            class: "count_down"
+          
+        }));
     count = app.flag--;
-    if(app.flag===0){
+    if (app.flag === 0) {
         $('.count_down').html('GO!');
-    }else{
-            $('.count_down').html(count-1);
+    } else {
+        $('.count_down').html(count - 1);
 
     }
-    
+
     if (app.flag >= 0) {
         setTimeout(app.countDown, 1000);
     } else {
-        $('.count_down').empty();
+        $('.count_down').remove();
         app.flag = 3;
         app.start();
 
@@ -48,7 +55,8 @@ $(document).ready(function () {
 
 
 app.start = function () {
-            app.obstacles();
+    app.obstacles();
+app.collision=0;
 
     $(".progress").removeClass("progressclick1");
     $(".progress").removeClass("progressclick");
@@ -71,23 +79,45 @@ app.track = function () {
             class: "car",
             id: "car"
         }));
+
     app.position = 0;
     app.intervalTrack = setInterval(function () {
         $(".progress").addClass("progressclick1");
         counter++;
         $('.score').text(counter);
 
-        if (app.position < 5000) {
-            app.position += 3;
-        } else if (app.position > 5000 && app.position <= 9000) {
-            app.position += 6;
-        } else {
-            app.position += 8;
-        }
+        // if (app.position < 5000) {
+        app.position += 4;
+        //   } else if (app.position > 5000 && app.position <= 9000) {
+        //      app.position += 4;
+        //  } else {
+        //     app.position += 5;
+        //  }
         $("#track").css({
             "background-position": "0px " + app.position + "px"
         });
+        $(".sideright").css({
+            "background-position": "0px " + (app.position-1) + "px"
+        });
+        $(".sideleft").css({
+            "background-position": "0px " + (app.position-1) + "px"
+        });
+        
+        //finish line
+        if(counter===10000){
+             $(".track").append(
+        $('<div />', {
+            class: "finish"
+        }));
+            app.finishline();
+        }
+        
+        
+        
+        
     }, 10);
+
+
 
 }
 
@@ -111,22 +141,28 @@ app.traffic_car_1 = function () {
         }
         // if (($("#traffic_car_1").position().top) <= 1200) {
         if (($("#traffic_car_1").position().top) <= ($("#track").position().top + $("#track").outerHeight())) {
-            if (app.position < 5000) {
-                $("#traffic_car_1").animate({
-                    top: "+=" + 3 + "px",
-                }, 1, app.checkCollisionsCar1);
-            } else if (app.position > 5000 && app.position <= 9000) {
-                $("#traffic_car_1").animate({
-                    top: "+=" + 7 + "px",
-                }, 1, app.checkCollisionsCar1);
-            } else {
-                $("#traffic_car_1").animate({
-                    top: "+=" + 10 + "px",
-                }, 1, app.checkCollisionsCar1);
-            }
+
+//            //   if (app.position < 5000) {
+            $("#traffic_car_1").animate({
+                top: "+=" + 2 + "px",
+            }, 1, app.checkCollisionsCar1);
+//             $("#traffic_car_1").css({
+//             top: "+=" + 3 + "px"
+//        });
+//        
+            // } else if (app.position > 5000 && app.position <= 9000) {
+            //    $("#traffic_car_1").animate({
+            //        top: "+=" + 4 + "px",
+            ////     }, 1, app.checkCollisionsCar1);
+            // } else {
+            //     $("#traffic_car_1").animate({
+            //        top: "+=" + 5 + "px",
+            //   }, 1, app.checkCollisionsCar1);
+            //  }
             //$("#traffic_car_2").css({ "background-position":"0px "+position2+"px" });
 
-        } else if (($("#traffic_car_1").position().top) === ($("#track").position().top + $("#track").outerHeight())) {
+        } else //if (($("#traffic_car_1").position().top) === ($("#track").position().top + $("#track").outerHeight())) 
+        {
 
             $('.traffic_car_1').remove();
 
@@ -145,7 +181,7 @@ app.traffic_car_2 = function () {
         }));
 
     //$("#traffic_car_2").css({'top':'0px'});
-   app.intervalTrafficCar_2 = setInterval(function () {
+    app.intervalTrafficCar_2 = setInterval(function () {
         if (($("#traffic_car_2").position()) === undefined) {
             return;
         }
@@ -161,8 +197,10 @@ app.traffic_car_2 = function () {
                     left: "-=20px",
                 }, 100);
             }
-        } else if (($("#traffic_car_2").position().bottom) == 0) {
+        } else //if (($("#traffic_car_2").position().bottom) == 0) 
+        {
 
+            $('.traffic_car_2').remove();
 
             clearInterval(app.intervalTrafficCar_2);
 
@@ -174,10 +212,10 @@ app.traffic_car_2 = function () {
 }
 app.obstacles = function () {
     app.interval_car_1 = setInterval(function () {
-        console.log(app.interval_car_1 );
+        // console.log(app.interval_car_1 );
         app.traffic_car_1();
-    }, 3000);
-  console.log(app.interval_car_1 );
+    }, 6500);
+    //console.log(app.interval_car_1 );
     app.interval_car_2 = setInterval(function () {
         app.traffic_car_2();
     }, 8000);
@@ -208,24 +246,25 @@ app.fuel_tank = function () {
         if (($("#fuel").position()) === undefined) {
             return;
         } else {
-            if (($("#fuel").position().top) <= 1200) {
-                if (app.position < 1500) {
-                    $("#fuel").animate({
-                        top: "+=" + 3 + "px",
-                    }, 1, app.checkCollisions_fuel);
-                } else if (app.position > 1500 && app.position <= 9000) {
-                    $("#fuel").animate({
-                        top: "+=" + 7 + "px",
-                    }, 1, app.checkCollisions_fuel);
-                } else {
-                    $("#fuel").animate({
-                        top: "+=" + 10 + "px",
-                    }, 1, app.checkCollisions_fuel);
-                }
+            if (($("#fuel").position().top) <= 768) {
+                // if (app.position < 1500) {
+                $("#fuel").animate({
+                    top: "+=" + 3 + "px",
+                }, 1, app.checkCollisions_fuel);
+                //                } else if (app.position > 1500 && app.position <= 9000) {
+                //                    $("#fuel").animate({
+                //                        top: "+=" + 7 + "px",
+                //                    }, 1, app.checkCollisions_fuel);
+                //                } else {
+                //                    $("#fuel").animate({
+                //                        top: "+=" + 10 + "px",
+                //                    }, 1, app.checkCollisions_fuel);
+                //                }
                 //$("#traffic_car_2").css({ "background-position":"0px "+position2+"px" });
 
-            } else if (($("#fuel").position().top) > 700) {
+            } else {
 
+                $('#fuel').remove();
 
                 clearInterval(app.intervalFuelTank);
 
@@ -256,24 +295,25 @@ app.oil_spill = function () {
             return;
         }
 
-        if (($("#spill").position().top) <= 1200) {
-            if (app.position < 1500) {
-                $("#spill").animate({
-                    top: "+=" + 3 + "px",
-                }, 1, app.checkCollisions_spill);
-            } else if (app.position > 1500 && app.position <= 9000) {
-                $("#spill").animate({
-                    top: "+=" + 7 + "px",
-                }, 1, app.checkCollisions_spill);
-            } else {
-                $("#spill").animate({
-                    top: "+=" + 10 + "px",
-                }, 1, app.checkCollisions_spill);
-            }
+        if (($("#spill").position().top) <= 768) {
+            // if (app.position < 1500) {
+            $("#spill").animate({
+                top: "+=" + 3 + "px",
+            }, 1, app.checkCollisions_spill);
+            //            } else if (app.position > 1500 && app.position <= 9000) {
+            //                $("#spill").animate({
+            //                    top: "+=" + 7 + "px",
+            //                }, 1, app.checkCollisions_spill);
+            //            } else {
+            //                $("#spill").animate({
+            //                    top: "+=" + 10 + "px",
+            //                }, 1, app.checkCollisions_spill);
+            //            }
             //$("#traffic_car_2").css({ "background-position":"0px "+position2+"px" });
 
-        } else if (($("#fuel").position().top) > 1200) {
+        } else {
 
+            $('#spill').remove();
 
             clearInterval(app.intervalOilSpill);
 
@@ -366,20 +406,21 @@ app.checkCollisions = function () {
     var verticalMatch = app.comparePositions(pos[1], pos2[1]);
     var match = horizontalMatch && verticalMatch;
     if (match) {
-             alert("gameOver");
-            app.countDown();
-//                  app.gameOver();
-//
-//
-//        $(".gameOver").click();
-//        $(".start").off().on('click', function () {
-//            app.countDown();
-//        });
+        alert("gameOver");
+        app.countDown();
+        //                  app.gameOver();
+        //
+        //
+        //        $(".gameOver").click();
+        //        $(".start").off().on('click', function () {
+        //            app.countDown();
+        //        });
         // app.countDown();
     }
 }
 
 app.checkCollisionsCar1 = function () {
+    
     var box = $("#car");
     var pos = app.getPositions(box);
 
@@ -388,15 +429,21 @@ app.checkCollisionsCar1 = function () {
     var verticalMatch = app.comparePositions(pos[1], pos2[1]);
     var match = horizontalMatch && verticalMatch;
     if (match) {
-          app.gameOver();
-     alert("gameOver");
-            app.start();
-          
-//
-//        $(".gameOver").click();
-//        $(".start").off().on('click', function () {
-//            app.countDown();
-//        });
+        if(app.collision===0){
+           app.gameOver();
+            app.gameOverDialog();
+    //  $('.car').css({"position":"relative"})
+
+            app.collision++;
+        }
+        //alert("gameOver");
+        // app.start();
+
+        //
+        //        $(".gameOver").click();
+        //        $(".start").off().on('click', function () {
+        //            app.countDown();
+        //        });
         // app.countDown();
     }
 }
@@ -413,14 +460,19 @@ app.checkCollisions2 = function () {
         var match = horizontalMatch && verticalMatch;
 
         if (match) {
-                  alert("gameOver");
-            app.countDown();
-           // app.gameOver();
-//            $(".gameOver").click();
-//            $(".start").off().on('click', function () {
-//                app.countDown();
-//            });
-              // app.start();
+            if(app.collision===0){
+           app.gameOver();
+            app.gameOverDialog();
+    //  $('.car').css({"position":"relative"})
+
+            app.collision++;
+        }
+            // app.gameOver();
+            //            $(".gameOver").click();
+            //            $(".start").off().on('click', function () {
+            //                app.countDown();
+            //            });
+            // app.start();
         }
     }
 }
@@ -437,6 +489,7 @@ app.checkCollisions_fuel = function () {
         var match = horizontalMatch && verticalMatch;
 
         if (match) {
+
             $('.fuel').remove();
 
             val1 += 20;
@@ -501,16 +554,20 @@ app.progress_bar = function () {
         progressbar.progressbar("value", val1);
 
 
-        if (val >= 2) {
-            setTimeout(progress, 100);
+        if (val >= 0) {
+            app.progressBarTimeout=setTimeout(progress, 100);
         } else {
-            alert("gameOver");
-            app.countDown();
-          //  $(".gameOver").click();
-          //  $(".start").off().on('click', function () {
-          //      app.countDown();
-         //   });
-            
+       
+           app.gameOver();
+            app.gameOverDialog();
+    //  $('.car').css({"position":"relative"})
+
+           
+            //  $(".gameOver").click();
+            //  $(".start").off().on('click', function () {
+            //      app.countDown();
+            //   });
+
         }
     }
 
@@ -521,7 +578,7 @@ app.progress_bar = function () {
 
 
 app.moveCarOnButtonPress = function () {
-    clearInterval(intervalPress);
+    clearInterval(app.intervalPress);
     var road = $('#track'),
         myCar = $('#car'),
         w = road.width() - myCar.width(),
@@ -540,7 +597,7 @@ app.moveCarOnButtonPress = function () {
         d[e.which] = false;
     });
 
-    var intervalPress = setInterval(function () {
+    app.intervalPress = setInterval(function () {
         myCar.css({
             left: function (i, v) {
                 return newv(v, 37, 39);
@@ -554,30 +611,87 @@ app.moveCarOnButtonPress = function () {
 
 
 
-app.gameOver = function () {
-    console.log(app.interval_car_1);
+app.gameOver = function () {  
+    clearInterval(app.intervalPress);
+    clearInterval(app.interval_car_1);
+    clearInterval(app.interval_car_2);
+    clearInterval(app.fuel_tank);
+    clearInterval(app.oilSpill);
     clearInterval(app.intervalTrack);
-        clearInterval(app.intervalTrafficCar_1);
+    clearInterval(app.intervalTrafficCar_1);
+    clearInterval(app.intervalTrafficCar_2);
+    clearInterval(app.intervalFuelTank);
+    clearInterval(app.intervalOilSpill);
+    clearTimeout(app.progressBarTimeout);
 
-        clearInterval(app.intervalTrafficCar_2);
+}
 
-        clearInterval(app.intervalFuelTank);
 
-        clearInterval(app.intervalOilSpill);
-
-  
-
+app.gameOverDialog=function(){
+        
+       $(".cargame").append(
+        $('<div />', {
+            class: "gameover"
+          
+        }).append($('<p />', {
+           class: "gameovertext",
+          text:"Game Over"
+        })).append($('<img />', {
+            src: "images/accident.png"
+          
+        })).append($('<p />', {
+           class: "gameovertextcrached",
+          text:"Crashed"
+        })).append($('<button />', {
+           class: "gameoverbutton btn btn-primary",
+          text:"Try again"
+        })));
+     
     
-      clearInterval(app.interval_car_1);
-      clearInterval(app.interval_car_2);
-      clearInterval(app.fuel_tank);
-      clearInterval( app.oilSpill);
-  //app.interval_car_1=null;
-    //app.interval_car_2 = null;
-      //  app.fuel_tank = null;
-   //app.oilSpill=null;
-   
-    //app.progress_bar = null;
+    $(".gameoverbutton").off().on("click",function(){$('.gameover').remove(); app.countDown();});
     
+}
 
+
+app.finishline=function(){
+app.finishline1 = setInterval(function () {
+        if (($(".finish").position()) === undefined) {
+            return;
+        }
+       
+        if (($(".finish").position().top) <= ($("#track").position().top + $("#track").outerHeight())) {         
+            $(".finish").animate({
+                top: "+=" + 4 + "px",
+            }, 10,app.collisionFinshLine);
+        } else 
+        {
+
+            $('.finish').remove();
+
+            clearInterval(app.finishline);
+
+        }
+
+    }, 10);
+}
+
+
+app.collisionFinshLine = function () {
+    var box = $(".car");
+    if (box.length === 0) {
+        return false;
+    } else {
+        var pos = app.getPositions(box);
+
+        var pos2 = app.getPositions(this);
+        var horizontalMatch = app.comparePositions(pos[0], pos2[0]);
+        var verticalMatch = app.comparePositions(pos[1], pos2[1]);
+        var match = horizontalMatch && verticalMatch;
+
+        if (match) {
+
+         alert('success')
+         app.gameOver();
+        }
+    }
 }
