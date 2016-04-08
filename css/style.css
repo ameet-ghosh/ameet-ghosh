@@ -1,20 +1,27 @@
 body {
+    position: relative;
     overflow: hidden;
     background-image: url('../images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    /*
+         perspective: 417px;
+    perspective-origin: 619px 560px;
+*/
 }
 
 #track {
     width: 20%;
-    height: inherit;
+    height: 100%;
     position: absolute;
     left: 500px;
     background: url("../images/track.jpg") repeat-y left top;
     overflow: hidden;
     background-size: contain;
     z-index: -1;
+    /*    transform: rotateX(40deg);*/
 }
+
 .sideright {
     width: 20%;
     height: inherit;
@@ -23,7 +30,9 @@ body {
     background: url("../images/sides.png") repeat-y left top;
     overflow: hidden;
     background-size: contain;
+    /*        transform: rotateX(40deg);*/
 }
+
 .sideleft {
     width: 20%;
     height: inherit;
@@ -32,16 +41,25 @@ body {
     background: url("../images/sideleft.png") repeat-y left top;
     overflow: hidden;
     background-size: contain;
+    /*        transform: rotateX(40deg);*/
 }
 
 .traffic_car_1 {
     position: absolute;
     top: 0px;
-      width: 34px;
+    width: 34px;
+    height: 64px;
+    background-image: url('../images/image3.png');
+    background-repeat: no-repeat;
+}
+
+.traffic_car_3 {
+    position: absolute;
+    top: 0px;
+    width: 34px;
     height: 64px;
     background-image: url('../images/traffic_car_1.png');
     background-repeat: no-repeat;
-   
 }
 
 .startline {
@@ -51,7 +69,6 @@ body {
     height: 75px;
     background-image: url('../images/start.png');
     background-repeat: no-repeat;
-   
 }
 
 .fuel {
@@ -72,13 +89,14 @@ body {
     background-image: url('../images/oil_spill.png');
     background-repeat: no-repeat;
     background-position: 0px 0px;
+    z-index: -1;
 }
 
 .traffic_car_2 {
     position: absolute;
-    left: 215px;
+    /*    left: 215px;*/
     top: 0px;
-        width: 37px;
+    width: 37px;
     height: 64px;
     background-image: url('../images/car.png');
     background-repeat: no-repeat;
@@ -87,13 +105,12 @@ body {
 #car {
     position: absolute;
     left: 120px;
-   bottom: 100px;
-       width: 14%;
+    bottom: 100px;
+    width: 14%;
     height: 9.5%;
     background-image: url('../images/car.png');
     background-repeat: no-repeat;
-        z-index: 1;
-
+    z-index: 1;
 }
 
 .animated {
@@ -129,38 +146,42 @@ body {
 }
 
 #progressbar {
-       width: 20%;
+    width: 20%;
     height: 2%;
 }
 
-
-@-webkit-keyframes spinnerRotate
-{
-    from{-webkit-transform:rotate(0deg);
-               
-
+@-webkit-keyframes spinnerRotate {
+    from {
+        -webkit-transform: rotate(0deg);
     }
-    to{left:40%;-webkit-transform:rotate(360deg);}
-    
-
-}
-@-moz-keyframes spinnerRotate
-{
-    from{-moz-transform:rotate(0deg) ;}
-    to{left:40%;-moz-transform:rotate(360deg) ;}
-
-}
-@-ms-keyframes spinnerRotate
-{
-    from{-ms-transform:rotate(0deg);}
-    to{left:40%;-ms-transform:rotate(360deg);}
-
+    to {
+        left: 40%;
+        -webkit-transform: rotate(360deg);
+    }
 }
 
+@-moz-keyframes spinnerRotate {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        left: 40%;
+        -moz-transform: rotate(360deg);
+    }
+}
 
+@-ms-keyframes spinnerRotate {
+    from {
+        -ms-transform: rotate(0deg);
+    }
+    to {
+        left: 40%;
+        -ms-transform: rotate(360deg);
+    }
+}
 
-.spin{
-    -webkit-animation-name:  spinnerRotate;
+.spin {
+    -webkit-animation-name: spinnerRotate;
     -webkit-animation-duration: 1s;
     -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
@@ -174,26 +195,46 @@ body {
     -ms-animation-timing-function: linear;
 }
 
-
-.count_down{
-        font-size: 100px;
+.count_down {
+    /*
+        border: 5px solid white;
+    border-radius: 75%;
+    padding: 25px;
+    font-size: 65px;
+    margin-top: 100%;
+    margin-left: 20%;
+    color: green;
+    width: 167px;
+    height: 155px;
+    background:  black;
+    text-align: center;
+*/
+    /*
+        border: 10px solid WHITE;
+    border-radius: 75%;
+    font-size: 100px;
+    margin-top: 100%;
+    margin-left: 20%;
+    color: green;
+    width: 58%;
+    background: black;
+    text-align: center;
+*/
+    font-size: 100px;
     margin-top: 100%;
     color: green;
-      width: 100%;
+    width: 100%;
     text-align: center;
+    z-index: 100;
 }
 
-
-
-.cargame{
-    width:1024px;
+.cargame {
+    width: 1024px;
     height: 768px;
     background-position: 0px 0px;
 }
 
-
-
-.gameover{
+.gameover {
     left: 350px;
     top: 20px;
     position: absolute;
@@ -201,40 +242,45 @@ body {
     width: 600px;
     height: 630px;
     background-image: url('../images/white.png');
-
 }
 
-
-.gameovertext{
+.gameovertext {
     margin-left: 170px;
     margin-top: 40px;
     font-size: 50px;
 }
 
-.gameover>img{
+.gameover>img {
     margin-left: 150px;
     margin-top: 70px;
-
 }
 
-.gameovertextcrached{
-        font-size: 30px;
+.gameovertextcrached {
+    font-size: 30px;
     margin-left: 250px;
 }
-.gameoverbutton
-{
+
+.gameoverbutton {
     margin-left: 265px;
     margin-top: 30px;
 }
 
-.finish{
-  height: 54px;
+.finish {
+    height: 54px;
     width: 100%;
     position: absolute;
     left: 0px;
     background: url("../images/finish.jpg");
     background-repeat: no-repeat;
     z-index: -1;
-
 }
-  
+
+.truck {
+    position: absolute;
+    /*    left: 215px;*/
+    top: 0px;
+    width: 33px;
+    height: 150px;
+    background-image: url('../images/truck.png');
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,11 @@
+var app = {};
+app.collision = 0;
+app.flag = 4;
+app.val1 = 0;
+app.randomObstacle = 0;
+app.position = 0;
+app.speedCar1 = 1;
+app.actualScore = 0;
+app.collisionSpill = 0;
+app.speedCar3 = 1;
+app.speedCar2 = 1.5;

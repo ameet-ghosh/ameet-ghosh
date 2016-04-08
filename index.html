@@ -7,8 +7,14 @@
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <link href="bower_components//jquery-ui/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <script src="bower_components/bootstrap/js/modal.js"></script>
-
+    <script src="js/constants.js"></script>
     <script src="js/car.js"></script>
+    <script src="js/obstacles.js"></script>
+    <script src="js/keyevent.js"></script>
+    <script src="js/collision.js"></script>
+    <script src="js/gameover.js"></script>
+
+
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 
 
@@ -23,28 +29,18 @@
         <div class='sideleft'></div>
 
         <div id="track" class="track">
-            <!--  <div class='startline'></div>-->
-<!--            <div class='count_down'></div>-->
-
         </div>
 
         <div>
-            <label div style="
-   color:white;
-">Score :<span style="
-   color:white;
-" class='score'></span></label>
+            <label div style="color:white;">Meters :<span style="color:white;" class='score'></span></label>
+
 
         </div>
-        <label style="
-   color:white;
-">Fuel :
-        </label>
-        <div style="
-    transform: rotate(-90deg);
-    margin-left: -900px;
-    margin-top: -600px;
-">
+        <div>
+            <label div style="color:white;">Score :<span style="color:white;" class='actualscore'></span></label>
+        </div>
+        <label style="color:white;">Fuel :</label>
+        <div style="transform: rotate(-90deg);margin-left: -900px;margin-top: -600px;">
 
             <div id="progressbar"></div>
         </div>
